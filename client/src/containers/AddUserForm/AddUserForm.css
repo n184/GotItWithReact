@@ -1,0 +1,21 @@
+.wBudget .form-control {
+	max-width: 20%;
+
+}
+
+.wBudget, .quantityNeeded, .newUser {
+	align-items: center;
+	margin-top: 15px;
+	text-align: center;
+
+}
+
+form {
+	padding: 15px;
+
+}
+
+button {
+	margin:0 4rem;
+}
+
