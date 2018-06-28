@@ -10,7 +10,11 @@ router.route("/")
 router
   .route("/:id")
   .get(usersController.findById)
-  .put(usersController.update)
+  .put(usersController.createItem)
   .delete(usersController.remove);
+
+ router
+ 	.route("/:userid/items/:itemid")
+ 	.delete(usersController.removeItem);
 
 module.exports = router;

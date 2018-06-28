@@ -26,7 +26,10 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.1.6",
     "path": "^0.12.7",
+    "radium": "^0.24.0",
+    "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0"
   }
 }

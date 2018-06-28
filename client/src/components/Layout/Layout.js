@@ -4,6 +4,7 @@ import Aux from '../../hoc/Aux1';
 
 const layout = (props) => (
 	<Aux>
+		
 		<main>
 			{props.children}
 		</main>

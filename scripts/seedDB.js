@@ -20,8 +20,13 @@ const userSeed = [
       [
          {
             description: "Tie",
-           quantity: 3,
-          price: 50
+            quantity: 3,
+            price: 50
+         },
+         {
+            description: "Shoes",
+            quantity: 3,
+            price: 150
          }
       ],
   },

@@ -23,9 +23,10 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  update: function(req, res) {
+  createItem: function(req, res) {
+
     db.users
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id }, { $push: {items: {description: req.body.description, quantity: req.body.quantity}}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -35,5 +36,17 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+
+  removeItem: function(req, res) {
+    console.log(req.body, "body")
+    db.users
+      .findByIdAndUpdate({ _id: req.params.userid}, { "$pull" : {"items": {"_id" : req.params.itemid}}},
+        {multi: true, new: true })
+  
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
-};
+
+  };

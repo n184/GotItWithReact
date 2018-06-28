@@ -2,16 +2,19 @@
   background: #fff;
   border-radius: 2px;
   height: 125px;
-  margin: 2rem;
+  margin: 1rem;
   position: relative;
   width: 325px;
   box-shadow: 0 3px 6px #999, 0 3px 6px #999;
   text-align: left;
   align-items: inherit;
 }
-
-
-
+/*
+.card: nth-child(even) {
+  margin-right: 40px;
+  background: yellow;
+}
+*/
 .card > .content {
   padding-left: 1rem;
   padding-right: 1rem;

@@ -4,9 +4,7 @@ import React, { Component } from 'react';
 
 
 class AddItemForm  extends Component {
-  constructor(props) {
-    super(props);
-}
+
 
 
 renderOptionNames = () => {
@@ -26,19 +24,20 @@ renderOptionNames = () => {
     let style= {
         maxWidth: '35px'
     }
-
+console.log(this.props.userToAdd.name, "hi")
     return (
             <form >
                 <h2>Add a needed item</h2>
+                <div className="row">
                 <div className="item-description newItem">
-                 <div className="row">
+                 
                     <span className="whichUser col-md-4 col-xs-12">
                         <label>Select User:</label>
                         <select
                                 className="form-control selectUser"
                                 name="name"
-                                value={this.props.user.name} 
-                                onChange={this.props.user.handleInputChange}>
+                                value={this.props.userToAdd.name} 
+                                onChange={this.props.handleInputChange}>
                                 {this.renderOptionNames()}
                         </select>
                     </span>
@@ -46,9 +45,10 @@ renderOptionNames = () => {
                         <label>Item description:</label>
                         <input
                             type="text"
+                            name="description"
                             className="form-control"
-                            value={this.props.user.items}
-                            onChange={this.props.user.handleInputChange} />
+                            value={this.props.addItem.description}
+                            onChange={this.props.handleItemInput} />
                     </span>
                  </div>
 
@@ -57,16 +57,17 @@ renderOptionNames = () => {
                         <label>quantity needed: </label>
                         <input
                             style={style}
+                            name="quantity"
                             type="text" 
-                            value={this.props.user.items}
-                            onChange={this.props.user.handleInputChange} />
+                            value={this.props.addItem.quantity}
+                            onChange={this.props.handleItemInput} />
                         </div>
  
                  </div>
             
                 <div className="btn-group mt-3">
                  <button  onClick={this.handleAddItem} className="btn btn-secondary">Add another</button>
-                 <button onClick={this.handleFormSubmit} type="submit" className="btn btn-secondary">Submit</button>
+                 <button onClick={this.props.handleItemSubmit} type="submit" className="btn btn-secondary">Submit</button>
                 </div>
 
         </form>

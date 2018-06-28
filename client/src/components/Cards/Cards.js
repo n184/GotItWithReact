@@ -1,24 +1,28 @@
 import React from'react';
-
 import Card from '../Card/Card';
 
 
 
 
 let Cards = props => (
+
+     <div className="row">
+     <div className="col-md-4 col-xs-1">
 	 <ul>
+
 	    {props.user.map(user => (
 
 	        <Card 
 	        	key={user._id}
-          		name={user.name}
-          		overAllBudget={user.overAllBudget}
-          		//removeUser={removeUser}
-          		id={user._id}
-          		>
-          </Card>
+          	name={user.name}
+          	overAllBudget={user.overAllBudget}
+               expandUser={props.expandUser}
+          	removeUser={props.removeUser}
+          	_id={user._id} />
           ))}
           < /ul>
+          </div>
+          </div>
 	);
 
 export default Cards;
