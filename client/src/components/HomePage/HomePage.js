@@ -117,6 +117,16 @@ class HomePage extends Component {
       .catch(err => console.log(err));
   };
 
+  //   updateData = (userid, itemid) => {
+   
+  //   API.put(userid, itemid)
+  //     .then(res =>
+  //         {
+  //           this.setState({chosenUser: res.data})
+  //           this.loadUsers()
+  //         })
+  //     .catch(err => console.log(err));
+  // };
   
   handleAddUser = event => {
     event.preventDefault();
@@ -154,6 +164,20 @@ console.log('handleInputChange', event)
       });
       }
     }
+
+  };
+
+        handleBudgetChange = event => {
+    
+console.log('handleBudgetChange', event)
+    event.preventDefault();
+    // Getting the value and name of the input which triggered the change
+    let value = event.target.value;
+    let name = event.target.name;
+    console.log(name, "name")
+    console.log(value, "value")
+  this.setState({...this.state.chosenUser});
+
 
   };
 
@@ -209,9 +233,7 @@ console.log('handleInputChange', event)
   expandUser = id => {
         API.getUser(id)
       .then(res => {
-        console.log(res.data)
         this.setState({chosenUser: res.data })
-        console.log(this.state.chosenUser)
          })
     .catch(err => console.log(err));
 
@@ -283,6 +305,7 @@ console.log('handleInputChange', event)
                 removeItem={this.removeItem}
                 className="cd-fixed-bg cd-fixed-bg--8" 
                 chosenUser={this.state.chosenUser}
+                handleBudgetChange={this.handleBudgetChange}
               /> :  
               <h4>There are no items that need to be purchased at this time.</h4> 
             }

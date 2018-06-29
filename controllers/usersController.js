@@ -47,6 +47,16 @@ module.exports = {
   
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+    updateData: function(req, res) {
+    console.log(req.body, "body")
+    db.users
+      .findByIdAndUpdate({ _id: req.params.userid}, { "$push" : {overAllBudget: req.body.overAllBudget}},
+        {multi: true, new: true })
+  
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 
   };

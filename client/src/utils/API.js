@@ -14,7 +14,7 @@ export default {
     return axios.delete("/api/users/" + id);
   },
 
-    deleteItem: function(userid, itemid) {
+  deleteItem: function(userid, itemid) {
     return axios.delete("/api/users/" + userid + "/items/" + itemid);
   },
   // Saves a book to the database
