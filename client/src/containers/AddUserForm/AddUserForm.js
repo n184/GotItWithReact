@@ -37,8 +37,8 @@ class AddUserForm  extends Component {
                 </div>
             </div>
             <div className="btn-group mt-3">
-                 <button  onClick={this.props.handleAddUser} className="btn btn-secondary">Add another</button>
-                 <button onClick={this.props.handleUserSubmit} type="submit" className="btn btn-secondary">Submit</button>
+                
+                 <button onClick={this.props.handleUserSubmit} type="submit" className="btn btn-secondary submit">Submit</button>
             </div>
 
         </form>

@@ -1,12 +1,14 @@
 .wBudget .form-control {
 	max-width: 20%;
+	margin-left: 0px;
+
 
 }
 
 .wBudget, .quantityNeeded, .newUser {
 	align-items: center;
 	margin-top: 15px;
-	text-align: center;
+	text-align: left;
 
 }
 
@@ -18,4 +20,14 @@ form {
 button {
 	margin:0 4rem;
 }
+
+label {
+	margin-right: 18px;
+}
+
+.submit {
+	padding: 5px 100px;
+	text-align: left
+}
+
 

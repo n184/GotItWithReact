@@ -34,7 +34,8 @@ class HomePage extends Component {
         },
         buttonClicked: "userForm",
         chosenUser: {},
-        userToAdd: {}
+        userToAdd: {},
+        newBudget: 0
       };
 
   }
@@ -117,17 +118,6 @@ class HomePage extends Component {
       .catch(err => console.log(err));
   };
 
-  //   updateData = (userid, itemid) => {
-   
-  //   API.put(userid, itemid)
-  //     .then(res =>
-  //         {
-  //           this.setState({chosenUser: res.data})
-  //           this.loadUsers()
-  //         })
-  //     .catch(err => console.log(err));
-  // };
-  
   handleAddUser = event => {
     event.preventDefault();
     this.handleUserSubmit();
@@ -167,19 +157,38 @@ console.log('handleInputChange', event)
 
   };
 
-        handleBudgetChange = event => {
+  handleBudgetChange = event => { 
     
 console.log('handleBudgetChange', event)
     event.preventDefault();
     // Getting the value and name of the input which triggered the change
-    let value = event.target.value;
-    let name = event.target.name;
-    console.log(name, "name")
-    console.log(value, "value")
-  this.setState({...this.state.chosenUser});
-
+      let itemCost = event.target.value;
+      console.log(itemCost)
+      // this.state.chosenUser.overAllBudget - itemCost
+  this.setState({newBudget: {...this.state.newBudget,
+    newBudget: this.state.chosenUser.overAllBudget - itemCost
+  }
+});
+console.log(this.state.newBudget)
 
   };
+
+  handleBudgetChangeSubmit = (userid, itemid) => {
+  
+     API.updateBudget(userid, this.state.newBudget)
+      .then(res =>
+          {
+            console.log(res.data)
+            this.setState({chosenUser: {
+                overAllBudget: this.state.newBudget
+              }
+            })
+            this.removeItem(userid, itemid)
+            this.loadUsers()
+          })
+      .catch(err => console.log(err));
+  };
+
 
         handleAddUserChange = event => {
     
@@ -194,6 +203,7 @@ console.log('handleInputChange', event)
         }
       });
        console.log(this.state.addUser)
+
   };
 
 
@@ -213,6 +223,7 @@ console.log('handleInputChange', event)
         .then(res => this.loadUsers())
         .catch(err => console.log(err));
     }
+
   };
 
       handleClick = value => {
@@ -250,7 +261,7 @@ console.log('handleInputChange', event)
       <div className="App">
         <Layout>
 
-          <div className="cd-fixed-bg cd-fixed-bg--6">To</div>
+          <div className="cd-fixed-bg cd-fixed-bg--6">< /div>
         
 
           <div style={{background: "#999966"}}>
@@ -281,13 +292,13 @@ console.log('handleInputChange', event)
 
         <div className="cd-fixed-bg cd-fixed-bg--5">Welcome</div>
        
-
+        <div className="cd-fixed-bg cd-fixed-bg--3">
         <Cards
             user={this.state.user}
             removeUser={this.removeUser}
             expandUser={this.expandUser}
-            className="cd-fixed-bg cd-fixed-bg--3"
          />
+         </div>
           
 
 
@@ -306,6 +317,7 @@ console.log('handleInputChange', event)
                 className="cd-fixed-bg cd-fixed-bg--8" 
                 chosenUser={this.state.chosenUser}
                 handleBudgetChange={this.handleBudgetChange}
+                handleBudgetChangeSubmit={this.handleBudgetChangeSubmit}
               /> :  
               <h4>There are no items that need to be purchased at this time.</h4> 
             }

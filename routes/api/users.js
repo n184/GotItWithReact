@@ -15,7 +15,9 @@ router
 
  router
  	.route("/:userid/items/:itemid")
- 	.put(usersController.updateData)
  	.delete(usersController.removeItem);
+ router
+ 	.route("/:userid/budget")
+ 	.put(usersController.updateData);
 
 module.exports = router;

@@ -8,11 +8,13 @@ const ToggleButtons = (props) =>
 
  
 	<div>
-		<button className="toggleBut"
+		<button className="btn btn-info toggleBut"
+				
+				style={{margin: "35px"}}
 				onClick= {() => props.handleClick("userForm")}>
 				<b>Add a User Form</b>
 		</button>
-		<button className="toggleBut"
+		<button className="btn btn-info toggleBut"
 				value="itemForm"
 				onClick= {() => props.handleClick("itemForm")}>
 				<b>Add an Item Form</b>

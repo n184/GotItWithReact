@@ -1,52 +1,44 @@
 import React, {Component} from 'react';
+import './DataMapItems.css';
+import NewBudget from '../NewBudget/NewBudget';
+import Style from 'style-it';
 
-class DataMapItems  extends Component {
+class DataMapItems  extends React.Component {
 
-  newBudget= () => {
-    console.log(this.props.chosenUser)
-  let newBudget= this.props.chosenUser.overAllBudget - 50
-   } 
 
   render() {
 
 
   return (
 
-			<div>
-                <h4>
-                and needs {this.props.chosenUser.items.map(item => {
-                  console.log(item, "item")
-                  return ( 
-                    <p id={item._id}>
-
-                        {item.quantity} of {item.description}.
-                                                <span onClick={() => {this.props.removeItem(this.props.chosenUser._id ,item._id)}}
-                              className="remove">
-                               𝘅
-                        </span>
-         
-                        <input 
-                                name="overAllBudget"
-                                value={this.props.chosenUser.overAllBudget}
-                                onChange={this.props.handleBudgetChange}
-                        />
-                        My new total is going to be 
-
-                                       <br />This item was just purchaced for 
-                        <div className="alert alert-warning newBudget"
-                              role="alert">
-                              {this.props.chosenUser.overAllBudget - 50}
-                        </div>
-                        <button>Done</button>
+    
+        <div className="UserInfo">
+        <p>and needs {this.props.chosenUser.items.map(item => {
+            console.log(item, "item")
+            return ( 
+              <p id={item._id}>
+                  {item.quantity} of {item.description}.
+                  <span onClick={() => {this.props.removeItem(this.props.chosenUser._id ,item._id)}}
+                      className="remove">
+                      𝘅
+                  </span>
+                  <br/>
+                  <div className="alert alert-warning">
+                  This item was just purchaced for 
+                  <input 
+                        type="text"
+                        onChange={this.props.handleBudgetChange}
+                  />
+                  <br/>
+                  </div>
+                  <button onClick={() => {this.props.handleBudgetChangeSubmit(this.props.chosenUser._id ,item._id)}}>Done</button>
+              </p>
+            )})}
+        </p>
 
 
-                    </p>
-                   )
-                  }
- 
-                )}
-                </h4>
-            </div>
-)}}
+        </div>
+
+        )}}
 
 export default DataMapItems;

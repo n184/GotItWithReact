@@ -21,19 +21,22 @@ renderOptionNames = () => {
 
 
      console.log('inside AddItemForm', this.props.user);
-    let style= {
-        maxWidth: '35px'
+    let description= {
+        maxWidth: '70%'
+    }
+    let quantity= {
+      marginTop: '45px'
     }
 console.log(this.props.userToAdd.name, "hi")
     return (
             <form >
                 <h2>Add a needed item</h2>
                 <div className="row">
-                <div className="item-description newItem">
                  
-                    <span className="whichUser col-md-4 col-xs-12">
+                    <span className="whichUser col-6">
                         <label>Select User:</label>
                         <select
+                                style={{maxWidth: "65%", margin: "auto"}}
                                 className="form-control selectUser"
                                 name="name"
                                 value={this.props.userToAdd.name} 
@@ -41,33 +44,39 @@ console.log(this.props.userToAdd.name, "hi")
                                 {this.renderOptionNames()}
                         </select>
                     </span>
-                    <span className="col-md-4 col-xs-12">
-                        <label>Item description:</label>
-                        <input
-                            type="text"
-                            name="description"
-                            className="form-control"
-                            value={this.props.addItem.description}
-                            onChange={this.props.handleItemInput} />
-                    </span>
-                 </div>
-
-                    
-                        <div className="col-md-4 col-xs-12 quantityNeeded">
+                    <span className="col-3"></span>
+                    <div className="col-3 quantityNeeded">
                         <label>quantity needed: </label>
                         <input
-                            style={style}
+                            style={{maxWidth: "35px", margin: "auto"}}
                             name="quantity"
                             type="text" 
                             value={this.props.addItem.quantity}
                             onChange={this.props.handleItemInput} />
                         </div>
+
+                      </div>
+                      <div className="row">
+                    <span className="col-12">
+                    <div className="item-description newItem">
+                        <label>Item description:</label>
+                        <input
+                            style={{maxWidth: "50%", margin: "auto"}}
+                            type="text"
+                            name="description"
+                            className="form-control"
+                            value={this.props.addItem.description}
+                            onChange={this.props.handleItemInput} />
+                    </div>
+                    </span>
+
+                    
+
  
                  </div>
             
                 <div className="btn-group mt-3">
-                 <button  onClick={this.handleAddItem} className="btn btn-secondary">Add another</button>
-                 <button onClick={this.props.handleItemSubmit} type="submit" className="btn btn-secondary">Submit</button>
+                 <button onClick={this.props.handleItemSubmit} type="submit" className="btn btn-secondary submit">Submit</button>
                 </div>
 
         </form>

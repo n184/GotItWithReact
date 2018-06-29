@@ -52,8 +52,8 @@ module.exports = {
     updateData: function(req, res) {
     console.log(req.body, "body")
     db.users
-      .findByIdAndUpdate({ _id: req.params.userid}, { "$push" : {overAllBudget: req.body.overAllBudget}},
-        {multi: true, new: true })
+      .findByIdAndUpdate({ _id: req.params.userid}, { $set : {overAllBudget: req.body.newBudget}},
+        { new: true })
   
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

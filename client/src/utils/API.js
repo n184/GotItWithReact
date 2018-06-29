@@ -22,10 +22,20 @@ export default {
     return axios.post("/api/users", userData);
   },
 
+
   updateUser: function(id, userData) {
+
+    console.log(id, "id")
+
+    console.log(userData, "userData")
+
+    return axios.put("/api/users/" + id, userData);
+  },
+
+  updateBudget: function(id, userData) {
     console.log(id, "id")
     console.log(userData, "userData")
-    return axios.put("/api/users/" + id, userData);
+    return axios.put("/api/users/" + id + "/budget", userData );
   }
 
 

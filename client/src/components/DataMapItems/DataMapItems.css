@@ -1,0 +1,10 @@
+.remove {
+      color: #33bbff;
+       font-size: 40px;
+       cursor: pointer;
+         }
+
+        .remove:hover {
+                   color: #d50000; 
+                      }
+ 

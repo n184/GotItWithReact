@@ -1,13 +1,12 @@
 .card {
   background: #fff;
-  border-radius: 2px;
-  height: 125px;
+  height: auto;
   margin: 1rem;
   position: relative;
-  width: 325px;
+  max-width: 425px;
+  width: 100%;
   box-shadow: 0 3px 6px #999, 0 3px 6px #999;
   text-align: left;
-  align-items: inherit;
 }
 /*
 .card: nth-child(even) {
@@ -18,7 +17,11 @@
 .card > .content {
   padding-left: 1rem;
   padding-right: 1rem;
-  font-size: 15px;
+  font-size: 1.5rem;
+}
+
+.card > .content:hover {
+  cursor: pointer;
 }
 
 .card > .content > ul {
@@ -30,7 +33,7 @@
 }
 
 .card > .remove {
-  color: blue;
+  color: #33bbff;
   font-size: 40px;
   position: absolute;
   top: -20px;
@@ -40,4 +43,5 @@
 
 .card > .remove:hover {
   color: #d50000;
+  
 }
