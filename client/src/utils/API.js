@@ -24,11 +24,7 @@ export default {
 
 
   updateUser: function(id, userData) {
-
-    console.log(id, "id")
-
     console.log(userData, "userData")
-
     return axios.put("/api/users/" + id, userData);
   },
 

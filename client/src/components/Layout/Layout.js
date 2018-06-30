@@ -3,8 +3,7 @@ import React from 'react';
 import Aux from '../../hoc/Aux1';
 
 const layout = (props) => (
-	<Aux>
-		
+	<Aux>		
 		<main>
 			{props.children}
 		</main>

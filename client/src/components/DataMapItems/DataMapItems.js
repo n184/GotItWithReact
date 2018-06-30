@@ -1,44 +1,56 @@
 import React, {Component} from 'react';
-import './DataMapItems.css';
 import NewBudget from '../NewBudget/NewBudget';
-import Style from 'style-it';
 
-class DataMapItems  extends React.Component {
+
+class DataMapItems  extends Component {
 
 
   render() {
 
-
   return (
 
     
-        <div className="UserInfo">
+    <div 
+        className="UserInfo"
+        style={{textAlign: "center", fontSize: "30px"}}>
+
         <p>and needs {this.props.chosenUser.items.map(item => {
-            console.log(item, "item")
             return ( 
-              <p id={item._id}>
+              <p 
+                 id={item._id}>
                   {item.quantity} of {item.description}.
-                  <span onClick={() => {this.props.removeItem(this.props.chosenUser._id ,item._id)}}
-                      className="remove">
-                      𝘅
+                  <br/>
+                  <span onClick={() => 
+                      {this.props.removeItem(this.props.chosenUser._id ,item._id)}
+                  }
+                  className="remove">
+                  𝘅 Delete this item!
                   </span>
                   <br/>
                   <div className="alert alert-warning">
                   This item was just purchaced for 
-                  <input 
-                        type="text"
-                        onChange={this.props.handleBudgetChange}
+                  <input
+                      type="text"
+                      onChange={this.props.handleBudgetChange}
                   />
                   <br/>
                   </div>
-                  <button onClick={() => {this.props.handleBudgetChangeSubmit(this.props.chosenUser._id ,item._id)}}>Done</button>
+                  <button onClick={() => {
+                      this.props.handleBudgetChangeSubmit(this.props.chosenUser._id ,item._id)
+                  }}>
+                  Done
+                  </button>
+                  <hr/>
               </p>
-            )})}
+            )
+        })}
         </p>
 
 
-        </div>
+    </div>
 
-        )}}
+  )
+ }
+}
 
 export default DataMapItems;

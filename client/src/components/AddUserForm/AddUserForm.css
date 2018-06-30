@@ -19,6 +19,7 @@ form {
 
 button {
 	margin:0 4rem;
+
 }
 
 label {
@@ -27,7 +28,8 @@ label {
 
 .submit {
 	padding: 5px 100px;
-	text-align: left
+	text-align: center;
+	background: gray;
 }
 
 

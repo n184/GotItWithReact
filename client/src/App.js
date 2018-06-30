@@ -3,8 +3,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css'
 import Layout from './components/Layout/Layout';
-import HomePage from './components/HomePage/HomePage';
-import AboutUs from './components/AboutUs/AboutUs';
+import HomePage from './pages/HomePage/HomePage';
+import AboutUs from './pages/AboutUs/AboutUs';
 
 const App = ()=> (
 

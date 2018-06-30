@@ -4,12 +4,11 @@ const DataMap = props =>
 
 <div>
 
-<h4>
-                {props.chosenUser.name} has a budget of {props.chosenUser.overAllBudget}
+	<h2 style={{textAlign: "center", marginTop:"7%"}}>
+        {props.chosenUser.name} has a budget of {props.chosenUser.overAllBudget}
+	</h2>
 
-                </h4>
-
-            </div>
+</div>
 
 
 export default DataMap;

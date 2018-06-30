@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import './AddUserForm.css';
 
 class AddUserForm  extends Component {
@@ -38,7 +38,12 @@ class AddUserForm  extends Component {
             </div>
             <div className="btn-group mt-3">
                 
-                 <button onClick={this.props.handleUserSubmit} type="submit" className="btn btn-secondary submit">Submit</button>
+                <button 
+                    onClick={this.props.handleUserSubmit}
+                    type="submit" 
+                    className="btn btn-secondary submit">
+                    Submit
+                </button>
             </div>
 
         </form>
@@ -47,6 +52,11 @@ class AddUserForm  extends Component {
   }};
 
 
+AddUserForm.propTypes = {
+    addUser: PropTypes.object,
+    handleInputChange: PropTypes.func,
+    handleUserSubmit: PropTypes.func
 
+};
 
 export default AddUserForm;

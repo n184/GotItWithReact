@@ -6,8 +6,7 @@ import Card from './Card/Card';
 
 let Cards = props => (
 
-     <div className="row">
-     <div className="col-md-4 col-xs-1">
+
 	 <ul>
 
 	    {props.user.map(user => (
@@ -20,10 +19,9 @@ let Cards = props => (
           	removeUser={props.removeUser}
           	_id={user._id} />
           ))}
-          < /ul>
-          </div>
-          </div>
-	);
+     < /ul>
+
+);
 
 export default Cards;
 

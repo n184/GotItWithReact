@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-  // Setting the component's initial state
+import PropTypes from 'prop-types';
 
 
 
@@ -13,21 +13,18 @@ renderOptionNames = () => {
        <option value={optionName.id}>{optionName.name} </option> 
       ));
       return optionNames
-
   }
 
 
   render() {
 
-
-     console.log('inside AddItemForm', this.props.user);
-    let description= {
+     let description= {
         maxWidth: '70%'
     }
     let quantity= {
       marginTop: '45px'
     }
-console.log(this.props.userToAdd.name, "hi")
+
     return (
             <form >
                 <h2>Add a needed item</h2>
@@ -76,12 +73,24 @@ console.log(this.props.userToAdd.name, "hi")
                  </div>
             
                 <div className="btn-group mt-3">
-                 <button onClick={this.props.handleItemSubmit} type="submit" className="btn btn-secondary submit">Submit</button>
+                    <button 
+                        onClick={this.props.handleItemSubmit}
+                        type="submit" className="btn btn-secondary submit">
+                        Submit
+                    </button>
                 </div>
 
         </form>
             );
 }};
+
+AddItemForm.propTypes = {
+    user: PropTypes.arry,
+    addItem: PropTypes.object,
+    handleInputChange: PropTypes.func,
+    handleUserSubmit: PropTypes.func
+
+};
 
 
 export default AddItemForm;

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import Layout from '../Layout/Layout';
+import Layout from '../../components/Layout/Layout';
 import './HomePage.css';
 import  API from '../../utils/API';
-import AddUserForm from '../../containers/AddUserForm/AddUserForm';
-import AddItemForm from '../../containers/AddItemForm/AddItemForm';
+import AddUserForm from '../../components/AddUserForm/AddUserForm';
+import AddItemForm from '../../components/AddItemForm/AddItemForm';
 import Cards from '../../components/Cards/Cards';
-import ToggleButtons from '../ToggleButtons/ToggleButtons';
-import DataMap from '../DataMap/DataMap';
-import DataMapItems from '../DataMapItems/DataMapItems';
+import ToggleButtons from '../../components/ToggleButtons/ToggleButtons';
+import DataMap from '../../components/DataMap/DataMap';
+import DataMapItems from '../../components/DataMapItems/DataMapItems';
 
 
 class HomePage extends Component {
@@ -26,11 +26,8 @@ class HomePage extends Component {
         addItem: {
             name: "",
             overallBudget: 0,
-            //item: 
-                   // {
-                        description: "",
-                        quantity: 1
-                    //}
+            description: "",
+            quantity: 1
         },
         buttonClicked: "userForm",
         chosenUser: {},
@@ -42,7 +39,7 @@ class HomePage extends Component {
 
  componentDidMount() {
     this.setState({  user:
-    [
+      [
         {
             name: "Maya",
             overallBudget: 300,
@@ -55,7 +52,7 @@ class HomePage extends Component {
                     }
                 ],
         },
-    ]
+      ]
 
     })
 
@@ -64,122 +61,103 @@ class HomePage extends Component {
 
   handleItemInput = event => {
     event.preventDefault();
-    
-    // Getting the value and name of the input which triggered the change
     let value = event.target.value;
     let name = event.target.name;
-
-    console.log(name, "name")
-    console.log(value, "value")
-       this.setState({
-        addItem:{...this.state.addItem,
+    this.setState({
+        addItem:{
+          ...this.state.addItem,
           [name]: value
         }
       });
-       console.log(this.state.addItem)
   };
 
-      handleItemSubmit = event => {
-    // Preventing the default behavior of the form submit (which is to refresh the page)
+  handleItemSubmit = event => {
     event.preventDefault();
-    console.log(this.state.userToAdd)
 
-          API.updateUser(this.state.userToAdd.id, {
-            name: this.state.userToAdd.name,
-            description: this.state.addItem.description,
-            quantity: this.state.addItem.quantity
-      })
-        .then(res => this.loadUsers())
-        .catch(err => console.log(err));
-    }
+    API.updateUser(
+      this.state.userToAdd.id, 
+      {
+        name: this.state.userToAdd.name,
+        description: this.state.addItem.description,
+        quantity: this.state.addItem.quantity
+      }
+    )
+
+    .then(res => this.loadUsers())
+    .catch(err => console.log(err));
+  };
   
-
-
-
   removeUser = id => {
-    console.log(id)
     API.deleteUser(id)
       .then(res =>
           {
             this.setState({...this.state.user})
             this.loadUsers()
-          })
+          }
+      )
       .catch(err => console.log(err));
   };
 
-    removeItem = (userid, itemid) => {
-   
+  removeItem = (userid, itemid) => {
     API.deleteItem(userid, itemid)
-      .then(res =>
-          {
+      .then(res => {
             this.setState({chosenUser: res.data})
             this.loadUsers()
-          })
+            }
+      )
       .catch(err => console.log(err));
   };
 
   handleAddUser = event => {
     event.preventDefault();
     this.handleUserSubmit();
-
-    };
+  };
 
   loadUsers = () => {
     API.getUsers()
-    
       .then(res => {
-        console.log(res.data)
         this.setState({...this.state.user, user: res.data })
-         })
+        }
+      )
     .catch(err => console.log(err));
- 
-    };
+  };
 
-      handleInputChange = event => {
-    
-console.log('handleInputChange', event)
+  handleInputChange = event => {
     event.preventDefault();
-    // Getting the value and name of the input which triggered the change
+   
     let value = event.target.value;
     let name = event.target.name;
     console.log(name, "name")
     console.log(value, "value")
     for (let i =0; i < this.state.user.length; i++) {
       if (this.state.user[i].name === value) {
-               this.setState({
-        userToAdd:{
-          [name]: value,
-          id: this.state.user[i]._id
-        }
-      });
+              this.setState({
+                  userToAdd: {
+                      [name]: value,
+                      id: this.state.user[i]._id
+                  }
+              });
       }
     }
-
   };
 
   handleBudgetChange = event => { 
-    
-console.log('handleBudgetChange', event)
-    event.preventDefault();
-    // Getting the value and name of the input which triggered the change
+    event.preventDefault();  
       let itemCost = event.target.value;
       console.log(itemCost)
-      // this.state.chosenUser.overAllBudget - itemCost
-  this.setState({newBudget: {...this.state.newBudget,
-    newBudget: this.state.chosenUser.overAllBudget - itemCost
-  }
-});
-console.log(this.state.newBudget)
-
+      this.setState({
+        newBudget: {
+          ...this.state.newBudget,
+          newBudget: this.state.chosenUser.overAllBudget - itemCost
+        }
+      });
   };
 
   handleBudgetChangeSubmit = (userid, itemid) => {
-  
      API.updateBudget(userid, this.state.newBudget)
-      .then(res =>
-          {
-            console.log(res.data)
-            this.setState({chosenUser: {
+      .then(res => {
+            this.setState({chosenUser:
+              {
                 overAllBudget: this.state.newBudget
               }
             })
@@ -190,81 +168,66 @@ console.log(this.state.newBudget)
   };
 
 
-        handleAddUserChange = event => {
-    
-console.log('handleInputChange', event)
+  handleAddUserChange = event => {
     event.preventDefault();
-    // Getting the value and name of the input which triggered the change
+    
     let value = event.target.value;
     let name = event.target.name;
        this.setState({
-        addUser:{...this.state.addUser,
+        addUser:{
+          ...this.state.addUser,
           [name]: value
         }
       });
-       console.log(this.state.addUser)
-
   };
 
 
-      handleUserSubmit = event => {
-    // Preventing the default behavior of the form submit (which is to refresh the page)
+  handleUserSubmit = event => {
     event.preventDefault();
-    console.log(this.state.addUser)
+
     if (!this.state.addUser.name || !this.state.addUser.overAllBudget) {
       alert("Fill out your information!");
     } else {
       alert(`Hello ${this.state.addUser.name}`);
           API.saveUser({
-        name: this.state.addUser.name,
-        overAllBudget: this.state.addUser.overAllBudget
-
-      })
-        .then(res => this.loadUsers())
-        .catch(err => console.log(err));
+              name: this.state.addUser.name,
+              overAllBudget: this.state.addUser.overAllBudget
+          })
+          .then(res => this.loadUsers())
+          .catch(err => console.log(err));
     }
 
   };
 
-      handleClick = value => {
-    // Preventing the default behavior (which is to refresh the page)
-   // event.preventDefault();
-    //const value = event.target;
-    console.log(value)
+  handleClick = value => {
+
     if (value === "userForm") {
       this.setState({ buttonClicked: "userForm" })
-
-
     } if (value === "itemForm") {
       this.setState({buttonClicked: "itemForm"})
-
     }
   };
 
   expandUser = id => {
-        API.getUser(id)
+    API.getUser(id)
       .then(res => {
-        this.setState({chosenUser: res.data })
-         })
-    .catch(err => console.log(err));
-
+        this.setState({
+          chosenUser: res.data 
+        })
+      })
+      .catch(err => console.log(err));
   }
 
-  checkIfItemExsist = () => {
-
-  }
 
   render() {
 
-
     return (
-      <div className="App">
+      <div className="homePage">
         <Layout>
 
           <div className="cd-fixed-bg cd-fixed-bg--6">< /div>
         
-
-          <div style={{background: "#999966"}}>
+          <div style={{background: "#ebebe0"}}>
             <ToggleButtons
               handleClick={this.handleClick}
             />  
@@ -286,30 +249,27 @@ console.log('handleInputChange', event)
                   handleItemSubmit={this.handleItemSubmit}
                   className="cd-fixed-bg cd-fixed-bg--2" 
                 />
-              }
+            }
           </div>
-      
 
-        <div className="cd-fixed-bg cd-fixed-bg--5">Welcome</div>
+          <div className="cd-fixed-bg cd-fixed-bg--5"></div>
        
-        <div className="cd-fixed-bg cd-fixed-bg--3">
-        <Cards
-            user={this.state.user}
-            removeUser={this.removeUser}
-            expandUser={this.expandUser}
-         />
-         </div>
+          <div className="cd-fixed-bg cd-fixed-bg--3">
+            <Cards
+                user={this.state.user}
+                removeUser={this.removeUser}
+                expandUser={this.expandUser}
+             />
+          </div>
           
-
-
-
-            <div className="cd-fixed-bg cd-fixed-bg--7">You</div>
+          <div className="cd-fixed-bg cd-fixed-bg--7"></div>
 
           {this.state.chosenUser.name  ?
               <DataMap
                 className="cd-fixed-bg cd-fixed-bg--8" 
                 chosenUser={this.state.chosenUser}
-              /> : null }
+              /> : null
+          }
 
           {!this.state.chosenUser.items === "null" > 0  ?
               <DataMapItems
@@ -319,11 +279,9 @@ console.log('handleInputChange', event)
                 handleBudgetChange={this.handleBudgetChange}
                 handleBudgetChangeSubmit={this.handleBudgetChangeSubmit}
               /> :  
-              <h4>There are no items that need to be purchased at this time.</h4> 
-            }
-
-
-      
+                <h4>Please select a user</h4> 
+          }
+    
       </Layout>
     </div>
     );
@@ -331,12 +289,6 @@ console.log('handleInputChange', event)
 }
 
 export default HomePage;
-
-
-           // 
-
-
-        //    
-        //   
+  
 
 
