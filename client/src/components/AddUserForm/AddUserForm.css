@@ -17,19 +17,18 @@ form {
 
 }
 
-button {
-	margin:0 4rem;
 
-}
 
-label {
+h2, label {
 	margin-right: 18px;
+	margin-left: 26px;
 }
 
 .submit {
 	padding: 5px 100px;
 	text-align: center;
 	background: gray;
+	margin-left: 26px;
 }
 
 

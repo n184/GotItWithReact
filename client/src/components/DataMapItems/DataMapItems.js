@@ -12,8 +12,7 @@ class DataMapItems  extends Component {
     
     <div 
         className="UserInfo"
-        style={{textAlign: "center", fontSize: "30px"}}>
-
+        style={{textAlign: "center", fontSize: "23px"}}>
         <p>and needs {this.props.chosenUser.items.map(item => {
             return ( 
               <p 
@@ -28,16 +27,19 @@ class DataMapItems  extends Component {
                   </span>
                   <br/>
                   <div className="alert alert-warning">
-                  This item was just purchaced for 
+                  of this item were just purchaced for 
                   <input
+                      style={{margin: "5px"}}
                       type="text"
                       onChange={this.props.handleBudgetChange}
                   />
                   <br/>
                   </div>
-                  <button onClick={() => {
-                      this.props.handleBudgetChangeSubmit(this.props.chosenUser._id ,item._id)
-                  }}>
+                  <button 
+                          style={{background: "#b9b992"}}
+                          onClick={() => {
+                              this.props.handleBudgetChangeSubmit(this.props.chosenUser._id ,item._id)
+                           }}>
                   Done
                   </button>
                   <hr/>

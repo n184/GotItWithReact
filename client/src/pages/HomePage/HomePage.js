@@ -230,6 +230,7 @@ class HomePage extends Component {
           <div style={{background: "#ebebe0"}}>
             <ToggleButtons
               handleClick={this.handleClick}
+              style={{ color: "#b9b992", background: "white" }}
             />  
 
             {this.state.buttonClicked === "userForm" ?
@@ -266,13 +267,15 @@ class HomePage extends Component {
 
           {this.state.chosenUser.name  ?
               <DataMap
-                className="cd-fixed-bg cd-fixed-bg--8" 
+                className="cd-fixed-bg cd-fixed-bg--8"
+                style={{background: "#ebebe0"}} 
                 chosenUser={this.state.chosenUser}
               /> : null
           }
 
           {!this.state.chosenUser.items === "null" > 0  ?
               <DataMapItems
+                
                 removeItem={this.removeItem}
                 className="cd-fixed-bg cd-fixed-bg--8" 
                 chosenUser={this.state.chosenUser}
