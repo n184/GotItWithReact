@@ -230,7 +230,7 @@ class HomePage extends Component {
           <div style={{background: "#ebebe0"}}>
             <ToggleButtons
               handleClick={this.handleClick}
-              style={{ color: "#b9b992", background: "white" }}
+              style={{  color: "#b9b992", background: "white" }}
             />  
 
             {this.state.buttonClicked === "userForm" ?

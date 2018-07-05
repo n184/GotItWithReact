@@ -15,7 +15,7 @@ class ToggleButtons  extends Component {
        borderColor: "gray",
        borderStyle: "solid",
        borderWidth: "3px 2px",
-       marginLeft: "25%",
+       marginLeft: "10%",
        marginTop: "35px",
        marginRight: "2px",
       ":hover": {
