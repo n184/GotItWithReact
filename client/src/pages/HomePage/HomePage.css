@@ -38,11 +38,11 @@ h2 {
     max-height: auto;
     transition: transform .2s; 
 }
-
+/*
 .cd-fixed-bg.cd-fixed-bg--1: hover {
     transform: scale(1.0);
 }
-
+*/
 
 .cd-fixed-bg.cd-fixed-bg--2 {
     background-color: C0C0C0;
