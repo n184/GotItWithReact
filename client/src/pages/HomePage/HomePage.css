@@ -11,6 +11,7 @@ body {
     max-width: 800px;
     min-width: 430px;
     margin: auto;
+    
 }
 
 
@@ -24,11 +25,15 @@ h2 {
     min-height: 50vh;
     background-size: contain;
     background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: center center;
     background-color: white;
     font-size: 20px; 
     padding: 50px;
+    
+
+
+
 }
 
 .cd-fixed-bg.cd-fixed-bg--1 {
