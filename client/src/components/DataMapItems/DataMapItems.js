@@ -27,7 +27,7 @@ class DataMapItems  extends Component {
                   </span>
                   <br/>
                   <div className="alert alert-warning">
-                  of this item were just purchaced for 
+                  This item was just purchaced for 
                   <input
                       style={{margin: "5px"}}
                       type="text"
